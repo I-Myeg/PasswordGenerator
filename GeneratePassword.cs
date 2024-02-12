@@ -6,24 +6,25 @@ class GeneratePassword
     
     public DoPasswordInfo PasswordInfo()
     {
-        string verbsFilePath = @".\Resources\Verbs.txt";
-        string nounsFilePath = @".\Resources\Nouns.txt";
+        var verbsFilePath = @".\Resources\Verbs.txt";
+        var nounsFilePath = @".\Resources\Nouns.txt";
 
-        string[] verbs = File.ReadAllLines(verbsFilePath);
-        string[] nouns = File.ReadAllLines(nounsFilePath);
+        var verbs = File.ReadAllLines(verbsFilePath);
+        var nouns = File.ReadAllLines(nounsFilePath);
 
         if (nouns.Length < 2 || verbs.Length < 1)
         {
             throw new Exception("В файле должно быть как минимум 2 существительных и 1 глагол.");   
         }
 
-        string verb = GetRandomElement(verbs);
-        string noun = GetRandomElement(nouns);
-        string noun2 = GetRandomElement(nouns);
+        var verb = GetRandomElement(verbs);
+        var noun = GetRandomElement(nouns);
+        var noun2 = GetRandomElement(nouns);
 
-        string cyrillicPassword = $"{noun} {verb} {noun2}";
-        string latinPassword = ConvertToEnglishLayout(cyrillicPassword);
-        string generatedPassword = Generation(new string[] { latinPassword });
+        var cyrillicPassword = $"{noun} {verb} {noun2}";
+        var latinPassword = ConvertToEnglishLayout(cyrillicPassword);
+        var latinArray = latinPassword.Split(' ') ;
+        var generatedPassword = DoGeneration(latinArray);
         
         return new DoPasswordInfo(cyrillicPassword, latinPassword, generatedPassword);
     }
@@ -52,9 +53,9 @@ class GeneratePassword
             layoutMapping.ContainsKey(c) ? layoutMapping[c] : c).ToArray());
     }
 
-    private string Generation(string[] latinPassword)
+    private string DoGeneration(string[] latinArray)
     {
-        string[] selectedWords = latinPassword.OrderBy(w => _random.Next()).Take(_random.Next(3, 5)).ToArray();
+        string[] selectedWords = latinArray.OrderBy(w => _random.Next()).Take(_random.Next(3, 5)).ToArray();
         string generatedPassword = string.Join("", selectedWords.Select(w => w.Substring(0, Math.Min(3, w.Length))));
         
         return generatedPassword;
