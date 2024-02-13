@@ -1,4 +1,6 @@
-﻿namespace passwordClass;
+﻿using System.Text;
+
+namespace passwordClass;
 
 class DoPasswordInfo
 {
@@ -12,9 +14,13 @@ class DoPasswordInfo
         _latinPhrase = latinPhrase;
         _generatedPassword = generatedPassword;
     }
-
     public override string ToString()
-    {
-        return $"Фраза на кириллице: {_cyrillicPhrase}\nФраза на латинице: {_latinPhrase}\nСгенерированный пароль: {_generatedPassword}";
+    {   
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append($"Фраза на кириллице: {_cyrillicPhrase}\n");
+        stringBuilder.Append($"Фраза на латинице: {_latinPhrase}\n");
+        stringBuilder.Append($"Сгенерированный пароль: {_generatedPassword}");
+        
+        return stringBuilder.ToString();
     }
 }

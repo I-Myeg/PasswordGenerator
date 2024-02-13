@@ -3,6 +3,11 @@
 class GeneratePassword
 {
     private Random _random;
+
+    public GeneratePassword()
+    {
+        _random = new Random();
+    }
     
     public DoPasswordInfo PasswordInfo()
     {
@@ -24,15 +29,13 @@ class GeneratePassword
         var cyrillicPassword = $"{noun} {verb} {noun2}";
         var latinPassword = ConvertToEnglishLayout(cyrillicPassword);
         var latinArray = latinPassword.Split(' ') ;
-        var generatedPassword = DoGeneration(latinArray);
+        var generatedPassword = DoGenerator(latinArray);
         
         return new DoPasswordInfo(cyrillicPassword, latinPassword, generatedPassword);
     }
 
     private string GetRandomElement(string[] array)
     {
-        _random = new Random();
-        
         return array[_random.Next(array.Length)];
     }
 
@@ -48,12 +51,16 @@ class GeneratePassword
             { 'ш', 'i' }, { 'щ', 'o' }, { 'ъ', 'm' }, { 'ы', 's' }, { 'ь', '\'' },
             { 'э', ']' }, { 'ю', '.' }, { 'я', 'z' }, { ' ', ' ' }
         };
+        string latinPassword = new string(cyrillicPassword
+            .ToLower()
+            .ToCharArray()
+            .Select(c => layoutMapping.ContainsKey(c) ? layoutMapping[c] : c)
+            .ToArray());
 
-        return new string(cyrillicPassword.ToLower().ToCharArray().Select(c =>
-            layoutMapping.ContainsKey(c) ? layoutMapping[c] : c).ToArray());
+        return latinPassword;
     }
 
-    private string DoGeneration(string[] latinArray)
+    private string DoGenerator(string[] latinArray)
     {
         string[] selectedWords = latinArray.OrderBy(w => _random.Next()).Take(_random.Next(3, 5)).ToArray();
         string generatedPassword = string.Join("", selectedWords.Select(w => w.Substring(0, Math.Min(3, w.Length))));
