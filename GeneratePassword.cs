@@ -51,7 +51,7 @@ class GeneratePassword
             { 'ш', 'i' }, { 'щ', 'o' }, { 'ъ', 'm' }, { 'ы', 's' }, { 'ь', '\'' },
             { 'э', ']' }, { 'ю', '.' }, { 'я', 'z' }, { ' ', ' ' }
         };
-        string latinPassword = new string(cyrillicPassword
+        var latinPassword = new string(cyrillicPassword
             .ToLower()
             .ToCharArray()
             .Select(c => layoutMapping.ContainsKey(c) ? layoutMapping[c] : c)
