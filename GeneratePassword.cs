@@ -62,8 +62,13 @@ class GeneratePassword
 
     private string DoGenerator(string[] latinArray)
     {
-        string[] selectedWords = latinArray.OrderBy(w => _random.Next()).Take(_random.Next(3, 5)).ToArray();
-        string generatedPassword = string.Join("", selectedWords.Select(w => w.Substring(0, Math.Min(3, w.Length))));
+        var selectedWords = latinArray
+            .OrderBy(_ => _random.Next())
+            .Take(_random.Next(3, 5))
+            .ToArray();
+        var generatedPassword = string
+            .Join("", selectedWords
+                .Select(w => w.Substring(0, Math.Min(3, w.Length))));
         
         return generatedPassword;
     }
