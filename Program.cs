@@ -1,11 +1,11 @@
 ﻿namespace passwordClass;
 
-class Program
+internal abstract class Program
 {
-    static void Main()
+    private static void Main()
     {
-        GeneratePassword generatePassword = new GeneratePassword();
-        DoPasswordInfo doPasswordInfo = generatePassword.PasswordInfo();
-        Console.WriteLine(doPasswordInfo);
+        var passwordGenerator = new PasswordGenerator();
+        var passwordInfo = passwordGenerator.PasswordInfo();
+        Console.WriteLine(passwordInfo);
     }
 }

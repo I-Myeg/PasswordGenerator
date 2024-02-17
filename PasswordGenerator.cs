@@ -1,26 +1,19 @@
 ﻿namespace passwordClass;
 
-class GeneratePassword
+internal class PasswordGenerator
 {
-    private Random _random;
+    private readonly Random _random = new();
 
-    public GeneratePassword()
+    public PasswordInfo PasswordInfo()
     {
-        _random = new Random();
-    }
-    
-    public DoPasswordInfo PasswordInfo()
-    {
-        var verbsFilePath = @".\Resources\Verbs.txt";
-        var nounsFilePath = @".\Resources\Nouns.txt";
+        var verbsFilePath = Routes.FilePath.VerbsFilePath;
+        var nounsFilePath = Routes.FilePath.NounsFilePath;
 
         var verbs = File.ReadAllLines(verbsFilePath);
         var nouns = File.ReadAllLines(nounsFilePath);
 
         if (nouns.Length < 2 || verbs.Length < 1)
-        {
-            throw new Exception("В файле должно быть как минимум 2 существительных и 1 глагол.");   
-        }
+            throw new Exception("В файле должно быть как минимум 2 существительных и 1 глагол.");
 
         var verb = GetRandomElement(verbs);
         var noun = GetRandomElement(nouns);
@@ -28,20 +21,20 @@ class GeneratePassword
 
         var cyrillicPassword = $"{noun} {verb} {noun2}";
         var latinPassword = ConvertToEnglishLayout(cyrillicPassword);
-        var latinArray = latinPassword.Split(' ') ;
-        var generatedPassword = DoGenerator(latinArray);
-        
-        return new DoPasswordInfo(cyrillicPassword, latinPassword, generatedPassword);
-    }
+        var latinArray = latinPassword.Split(' ');
+        var generatedPassword = Generate(latinArray);
 
+        return new PasswordInfo(cyrillicPassword, latinPassword, generatedPassword);
+    }
+    
     private string GetRandomElement(string[] array)
     {
         return array[_random.Next(array.Length)];
     }
 
-    private string ConvertToEnglishLayout(string cyrillicPassword)
+    private static string ConvertToEnglishLayout(string cyrillicPassword)
     {
-        Dictionary<char, char> layoutMapping = new Dictionary<char, char>
+        var layoutMapping = new Dictionary<char, char>
         {
             { 'а', 'f' }, { 'б', ',' }, { 'в', 'd' }, { 'г', 'u' }, { 'д', 'l' },
             { 'е', 't' }, { 'ё', '`' }, { 'ж', ';' }, { 'з', 'p' }, { 'и', 'b' },
@@ -60,7 +53,7 @@ class GeneratePassword
         return latinPassword;
     }
 
-    private string DoGenerator(string[] latinArray)
+    private string Generate(string[] latinArray)
     {
         var selectedWords = latinArray
             .OrderBy(_ => _random.Next())
@@ -69,7 +62,7 @@ class GeneratePassword
         var generatedPassword = string
             .Join("", selectedWords
                 .Select(w => w.Substring(0, Math.Min(3, w.Length))));
-        
+
         return generatedPassword;
     }
 }
