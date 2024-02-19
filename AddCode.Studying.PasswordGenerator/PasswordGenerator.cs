@@ -1,10 +1,10 @@
-﻿namespace passwordClass;
+﻿namespace AddCode.Studying.PasswordGenerator;
 
-internal class PasswordGenerator
+public static class PasswordGenerator
 {
-    private readonly Random _random = new();
+    private static readonly Random _random = new();
 
-    public PasswordInfo PasswordInfo()
+    public static PasswordInfo PasswordInfo()
     {
         var verbsFilePath = Routes.FilePath.VerbsFilePath;
         var nounsFilePath = Routes.FilePath.NounsFilePath;
@@ -27,7 +27,7 @@ internal class PasswordGenerator
         return new PasswordInfo(cyrillicPassword, latinPassword, generatedPassword);
     }
     
-    private string GetRandomElement(string[] array)
+    private static string GetRandomElement(string[] array)
     {
         return array[_random.Next(array.Length)];
     }
@@ -53,7 +53,7 @@ internal class PasswordGenerator
         return latinPassword;
     }
 
-    private string Generate(string[] latinArray)
+    private static string Generate(string[] latinArray)
     {
         var selectedWords = latinArray
             .OrderBy(_ => _random.Next())

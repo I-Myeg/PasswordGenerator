@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace passwordClass;
+namespace AddCode.Studying.PasswordGenerator;
 
-internal class PasswordInfo(string cyrillicPhrase, string latinPhrase, string generatedPassword)
+public class PasswordInfo(string cyrillicPhrase, string latinPhrase, string generatedPassword)
 {
     public override string ToString()
     {

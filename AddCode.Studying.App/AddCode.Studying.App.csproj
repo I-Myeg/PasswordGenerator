@@ -8,7 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="Resources\*" CopyToOutputDirectory="Always"/>
+      <ProjectReference Include="..\AddCode.Studying.PasswordGenerator\AddCode.Studying.PasswordGenerator.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="Resources\*" CopyToOutputDirectory="Always" />
     </ItemGroup>
 
 </Project>

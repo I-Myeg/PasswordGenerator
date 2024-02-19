@@ -1,6 +1,6 @@
-﻿namespace passwordClass;
+﻿namespace AddCode.Studying.PasswordGenerator;
 
-public abstract class Routes
+public static class Routes
 { 
         internal static class FilePath
         {
