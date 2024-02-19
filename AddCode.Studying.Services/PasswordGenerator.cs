@@ -1,10 +1,10 @@
-﻿namespace AddCode.Studying.PasswordGenerator;
+﻿namespace AddCode.Studying.Services;
 
 public static class PasswordGenerator
 {
     private static readonly Random _random = new();
 
-    public static PasswordInfo PasswordInfo()
+    public static PasswordInfo Generate()
     {
         var verbsFilePath = Routes.FilePath.VerbsFilePath;
         var nounsFilePath = Routes.FilePath.NounsFilePath;

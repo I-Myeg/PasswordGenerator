@@ -1,4 +1,4 @@
-﻿namespace AddCode.Studying.PasswordGenerator;
+﻿namespace AddCode.Studying.Services;
 
 public static class Routes
 { 

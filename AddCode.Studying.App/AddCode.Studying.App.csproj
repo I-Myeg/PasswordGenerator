@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AddCode.Studying.PasswordGenerator\AddCode.Studying.PasswordGenerator.csproj" />
+      <ProjectReference Include="..\AddCode.Studying.Services\AddCode.Studying.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

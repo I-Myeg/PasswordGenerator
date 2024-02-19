@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCode.Studying.PasswordGenerator", "AddCode.Studying.PasswordGenerator\AddCode.Studying.PasswordGenerator.csproj", "{AE626E74-69C7-4818-966A-6A9CAA1CDC4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCode.Studying.Services", "AddCode.Studying.Services\AddCode.Studying.Services.csproj", "{AE626E74-69C7-4818-966A-6A9CAA1CDC4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCode.Studying.App", "AddCode.Studying.App\AddCode.Studying.App.csproj", "{C32DCF92-1556-4435-8F6B-D7FF3FCDB729}"
 EndProject
