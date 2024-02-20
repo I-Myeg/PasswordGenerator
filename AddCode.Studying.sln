@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCode.Studying.Services",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCode.Studying.App", "AddCode.Studying.App\AddCode.Studying.App.csproj", "{C32DCF92-1556-4435-8F6B-D7FF3FCDB729}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCode.Studying.Web", "AddCode.Studying.Web\AddCode.Studying.Web.csproj", "{E543FEF5-1D46-4493-A722-3D0D0353D074}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C32DCF92-1556-4435-8F6B-D7FF3FCDB729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C32DCF92-1556-4435-8F6B-D7FF3FCDB729}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C32DCF92-1556-4435-8F6B-D7FF3FCDB729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E543FEF5-1D46-4493-A722-3D0D0353D074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E543FEF5-1D46-4493-A722-3D0D0353D074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E543FEF5-1D46-4493-A722-3D0D0353D074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E543FEF5-1D46-4493-A722-3D0D0353D074}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

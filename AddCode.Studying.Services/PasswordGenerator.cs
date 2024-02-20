@@ -62,7 +62,7 @@ public static class PasswordGenerator
         var generatedPassword = string
             .Join("", selectedWords
                 .Select(w => w.Substring(0, Math.Min(3, w.Length))));
-
+        
         return generatedPassword;
     }
 }
