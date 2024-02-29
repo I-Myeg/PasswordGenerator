@@ -4,9 +4,9 @@ namespace AddCode.Studying.Services;
 
 public class PasswordInfo(string cyrillicPhrase, string latinPhrase, string generatedPassword)
 {
-    private string CyrillicPhrase { get; } = cyrillicPhrase;
-    private string LatinPhrase { get; } = latinPhrase;
-    private string GeneratedPassword { get; } = generatedPassword;
+    public string CyrillicPhrase { get; } = cyrillicPhrase;
+    public string LatinPhrase { get; } = latinPhrase;
+    public string GeneratedPassword { get; } = generatedPassword;
 
     public override string ToString()
     {
