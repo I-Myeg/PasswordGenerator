@@ -20,7 +20,8 @@ app.UseHttpsRedirection();
 
 app.MapGet("PasswordInformation", () =>
     {
-        var passwordInfo = PasswordGenerator.Generate();
+        var passwordGenerator = new PasswordGenerator();
+        var passwordInfo = passwordGenerator.Generate();
         return passwordInfo.ToString();
     })
     .WithName("GetPasswordInformation")

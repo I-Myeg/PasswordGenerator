@@ -8,20 +8,14 @@ internal abstract class Program
     {
         IPasswordGenerator generator;
         
-        var parameter = File.ReadAllText(@".\Resources\params.txt"); 
-        
-        if (parameter == "simple")
+        var parameter = File.ReadAllText(@".\Resources\params.txt");
+
+        generator = parameter switch
         {
-            generator = new PasswordGenerator();
-        }
-        else if (parameter == "strong")
-        {
-            generator = new StrongGenerator();
-        }
-        else
-        {
-            throw new AggregateException("Invalid parameter");
-        }
+            "simple" => new PasswordGenerator(),
+            "strong" => new StrongGenerator(),
+            _ => throw new AggregateException("Invalid parameter")
+        };
         PrintPassword(generator);
     }
 
