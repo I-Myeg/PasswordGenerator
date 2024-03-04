@@ -1,4 +1,6 @@
-﻿namespace AddCode.Studying.Services;
+﻿using System.Text;
+
+namespace AddCode.Studying.Services;
 
 public class ExtendedPasswordInfo : PasswordInfo
 {
@@ -12,9 +14,11 @@ public class ExtendedPasswordInfo : PasswordInfo
 
     public override string ToString()
     {
-        var baseInfo = base.ToString();
-        var extendedInfo = $"Время генерации пароля: {GenerationTime}";
+        var stringBuilder = base.ToString();
+        var sb = new StringBuilder();
+        sb.AppendLine(stringBuilder);
+        sb.AppendLine($"Время генерации пароля: {GenerationTime}");
         
-        return $"{baseInfo}\n{extendedInfo}";
+        return sb.ToString();
     }
 }

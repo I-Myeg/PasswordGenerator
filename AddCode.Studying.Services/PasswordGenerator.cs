@@ -1,13 +1,13 @@
 ﻿namespace AddCode.Studying.Services;
 
-public static class PasswordGenerator
+public class PasswordGenerator : IPasswordGenerator
 {
     private static readonly Random _random = new();
 
-    public static PasswordInfo Generate()
+    public PasswordInfo Generate()
     {
-        var verbsFilePath = Routes.FilePath.VerbsFilePath;
-        var nounsFilePath = Routes.FilePath.NounsFilePath;
+        var verbsFilePath = Routes.VerbsFilePath;
+        var nounsFilePath = Routes.NounsFilePath;
 
         var verbs = File.ReadAllLines(verbsFilePath);
         var nouns = File.ReadAllLines(nounsFilePath);
@@ -65,4 +65,5 @@ public static class PasswordGenerator
         
         return generatedPassword;
     }
+    
 }
