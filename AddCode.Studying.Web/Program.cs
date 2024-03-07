@@ -1,4 +1,5 @@
 using AddCode.Studying.Services;
+using AddCode.Studying.Services.PasswordGenerator;
 
 var builder = WebApplication.CreateBuilder(args);
 

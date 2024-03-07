@@ -1,4 +1,4 @@
-﻿namespace AddCode.Studying.Services;
+﻿namespace AddCode.Studying.Services.Models;
 
 internal static class Routes
 { 
