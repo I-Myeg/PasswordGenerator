@@ -1,4 +1,5 @@
-﻿using AddCode.Studying.Services.PasswordGenerator;
+﻿using AddCode.Studying.Services.Information;
+using AddCode.Studying.Services.PasswordGenerator;
 
 namespace AddCode.Studying.App;
 
@@ -13,7 +14,7 @@ internal abstract class Program
         generator = parameter switch
         {
             "simple" => new PasswordGenerator(),
-            "strong" => new StrongPassword(),
+            "strong" => new StrongPassword<ExtendedPasswordInfo>(),
             _ => throw new AggregateException("Invalid parameter")
         };
         PrintPassword(generator);

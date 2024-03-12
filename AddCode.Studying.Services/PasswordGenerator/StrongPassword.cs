@@ -1,11 +1,11 @@
-﻿using AddCode.Studying.Services.Models;
+﻿using AddCode.Studying.Services.Information;
+using AddCode.Studying.Services.Models;
 
 namespace AddCode.Studying.Services.PasswordGenerator;
 
-public class StrongPassword : IPasswordGenerator
+public class StrongPassword<T> : IPasswordGenerator where T : ExtendedPasswordInfo
 {
     private static readonly Random _random = new();
-    
     
     public PasswordInfo Generate()
     {
@@ -28,7 +28,7 @@ public class StrongPassword : IPasswordGenerator
         var generatedPassword = Generate(latinArray);
         var strongPassword = GenerateStrongPassword(generatedPassword);
 
-        return new PasswordInfo(cyrillicPassword, latinPassword, strongPassword);
+        return (T)Activator.CreateInstance(typeof(T),cyrillicPassword, latinPassword, strongPassword, DateTime.Now);
     }
     
     private static string GenerateStrongPassword(string generatedPassword)

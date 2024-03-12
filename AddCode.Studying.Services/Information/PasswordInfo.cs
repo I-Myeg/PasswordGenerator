@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace AddCode.Studying.Services;
+namespace AddCode.Studying.Services.Information;
 
 public class PasswordInfo(string cyrillicPhrase, string latinPhrase, string generatedPassword)
 {
